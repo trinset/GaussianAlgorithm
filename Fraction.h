@@ -11,7 +11,7 @@
 #include <stdexcept>
 #include <string>
 
-int gcd(int a, int b)
+long long int gcd(long long int a, long long int b)
 {
     if (b == 0)
     {
@@ -23,7 +23,7 @@ int gcd(int a, int b)
 class Rational
 {
 public:
-    Rational (int r = 0, int i = 1)
+    Rational (long long int r = 0, long long int i = 1)
     {
         if (i) {
             if (gcd(r, i)) {
@@ -46,28 +46,28 @@ public:
     }
 
     Rational operator+ (const Rational &rat) const;
-    Rational operator+ (int &a) const;
+    Rational operator+ (long long int &a) const;
 
     Rational operator- (const Rational &rat) const;
-    Rational operator- (int &a) const;
+    Rational operator- (long long int &a) const;
 
     Rational operator* (const Rational &rat) const;
-    Rational operator* (int &a) const;
+    Rational operator* (long long int &a) const;
 
     Rational operator/ (const Rational &rat) const;
-    Rational operator/ (int &a) const;
+    Rational operator/ (long long int &a) const;
 
     Rational& operator*= (const Rational &rat);
-    Rational& operator*= (int &a);
+    Rational& operator*= (long long int &a);
 
     Rational& operator+= (const Rational &rat);
-    Rational& operator+= (int &a);
+    Rational& operator+= (long long int &a);
 
     Rational& operator/= (const Rational &rat);
-    Rational& operator/= (int &a) ;
+    Rational& operator/= (long long int &a) ;
 
     Rational& operator-= (const Rational &rat);
-    Rational& operator-= (int &a);
+    Rational& operator-= (long long int &a);
 
     Rational& operator++ ();
     Rational operator++ (int);
@@ -78,22 +78,22 @@ public:
     Rational operator- () const;
 
     bool operator== (const Rational &rat) const;
-    bool operator== (int &a) const;
+    bool operator== (long long int &a) const;
 
     bool operator!= (const Rational &rat) const;
-    bool operator!= (int &a) const;
+    bool operator!= (long long int &a) const;
 
-    int numerator() const
+    long long int numerator() const
     {
         return numer;
     }
-    int denominator() const
+    long long int denominator() const
     {
         return denomin;
     }
 private:
 
-    int numer, denomin;
+    long long int numer, denomin;
 
 };
 
@@ -103,12 +103,12 @@ Rational Rational::operator+ (const Rational &rat) const
     return (Rational(numer * rat.denominator() + rat.numerator() * denomin, denomin * rat.denominator()));
 }
 
-Rational Rational::operator+ (int &a) const
+Rational Rational::operator+ (long long int &a) const
 {
     return (Rational(numer + a * denomin, denomin));
 }
 
-Rational operator+ (int a, const Rational &rat)
+Rational operator+ (long long int a, const Rational &rat)
 {
     return (rat + a);
 }
@@ -128,12 +128,12 @@ Rational Rational::operator- (const Rational &rat) const
     return (Rational(numer * rat.denominator() - rat.numerator() * denominator(), rat.denominator() * denomin));
 }
 
-Rational Rational::operator- (int &a) const
+Rational Rational::operator- (long long int &a) const
 {
     return (Rational(numer - a * denomin, denomin));
 }
 
-Rational operator- (int a, const Rational &rat)
+Rational operator- (long long int a, const Rational &rat)
 {
     return (Rational(-rat + a));
 }
@@ -143,12 +143,12 @@ Rational Rational::operator* (const Rational &rat) const
     return (Rational(numer * rat.numerator(), denomin * rat.denominator()));
 }
 
-Rational Rational::operator* (int &a) const
+Rational Rational::operator* (long long int &a) const
 {
     return (Rational(a * numer, denomin));
 }
 
-Rational operator* (int a, const Rational &rat)
+Rational operator* (long long int a, const Rational &rat)
 {
     return rat * a;
 }
@@ -158,17 +158,17 @@ Rational Rational::operator/ (const Rational &rat) const
     return (Rational(numer * rat.denominator(), denomin * rat.numerator()));
 }
 
-Rational Rational::operator/(int &a) const
+Rational Rational::operator/(long long int &a) const
 {
     return (Rational(numer, denomin * a));
 }
 
-Rational operator/ (int a, const Rational &rat)
+Rational operator/ (long long int a, const Rational &rat)
 {
     return (Rational(a * rat.denominator(), rat.numerator()));
 }
 
-bool Rational::operator== (int &a) const
+bool Rational::operator== (long long int &a) const
 {
     return (numer == a && denomin == 1);
 }
@@ -178,7 +178,7 @@ bool Rational::operator==(const Rational &rat) const
     return (numer == rat.numerator() && denomin == rat.denominator());
 }
 
-bool operator== (int a, const Rational &rat)
+bool operator== (long long int a, const Rational &rat)
 {
     return (rat == a);
 }
@@ -189,12 +189,12 @@ bool Rational::operator!= (const Rational &rat) const
     return (!(*this == rat));
 }
 
-bool Rational::operator!= (int &a) const
+bool Rational::operator!= (long long int &a) const
 {
     return (!(*this == a));
 }
 
-bool operator!= (int a, const Rational &rat)
+bool operator!= (long long int a, const Rational &rat)
 {
     return (!(rat == a));
 }
@@ -205,7 +205,7 @@ Rational& Rational::operator+=(const Rational &rat)
     return (*this);
 }
 
-Rational& Rational::operator+= (int &a)
+Rational& Rational::operator+= (long long int &a)
 {
     *this = *this + a;
     return (*this);
@@ -217,7 +217,7 @@ Rational& Rational::operator-= (const Rational &rat)
     return (*this);
 }
 
-Rational& Rational::operator-= (int &a)
+Rational& Rational::operator-= (long long int &a)
 {
     *this = *this - a;
     return (*this);
@@ -229,7 +229,7 @@ Rational& Rational::operator*= (const Rational &rat)
     return (*this);
 }
 
-Rational& Rational::operator*= (int &a)
+Rational& Rational::operator*= (long long int &a)
 {
     *this = *this * a;
     return (*this);
@@ -241,7 +241,7 @@ Rational& Rational::operator/= (const Rational &rat)
     return (*this);
 }
 
-Rational& Rational::operator/= (int &a)
+Rational& Rational::operator/= (long long int &a)
 {
     *this = *this / a;
     return (*this);
@@ -299,7 +299,7 @@ std::istream& operator>> (std::istream& in, Rational& a)
     std::string str1;
     in >> str;
     bool rat = false;
-    int c = 0, b = 0;
+    long long int c = 0, b = 0;
     for (char el : str) {
         if (el == '/') {
             rat = true;
