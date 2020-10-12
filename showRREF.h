@@ -7,7 +7,7 @@
 
 void showRREF()
 {
-    std::cout << "Enter the dimensions!" << '\n';
+    std::cout << "Enter the dimensions! (i.e. 5 5)" << '\n';
     size_t n, m;
     std::cin >> n >> m;
     std::cout << "Enter the elements:" << '\n';
